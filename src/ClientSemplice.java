@@ -13,19 +13,16 @@ public class ClientSemplice {
              Scanner scanner = new Scanner(System.in)) {
 
             String rigaDalServer;
-            // Questo pezzo va dentro il main del ClientSemplice
             while ((rigaDalServer = in.readLine()) != null) {
-                System.out.println(rigaDalServer); // Stampa quello che dice il server
+                System.out.println(rigaDalServer);
 
                 if (rigaDalServer.contains("RISULTATO")) break;
 
-                // TRUCCO: Se la riga finisce con ":", allora tocca a te scrivere!
                 if (rigaDalServer.trim().endsWith(":")) {
                     System.out.print("> ");
                     String inputUtente = scanner.nextLine();
                     out.println(inputUtente);
                 }
-
             }
 
         } catch (IOException e) {
