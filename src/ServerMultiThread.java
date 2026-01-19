@@ -7,10 +7,18 @@ public class ServerMultiThread {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("Server Pitagora avviato sulla porta " + port);
 
+            new Thread(() {
+                try {
+                    Thread.sleep(500);
+                    ClientSemplice.main(null);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
+
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("Nuovo client connesso: " + clientSocket.getInetAddress());
-                // Avvia il thread per gestire il singolo client
                 new Thread(new ClientHandler(clientSocket)).start();
             }
         } catch (IOException e) {
