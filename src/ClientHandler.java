@@ -11,10 +11,11 @@ class ClientHandler implements Runnable {
     @Override
     public void run() {
         try (
-                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
         ) {
-            // --- FASE 1: AUTENTICAZIONE ---
+            out.println("Connessione stabilita con il server.");
+
             out.println("Inserisci il tuo Nome Utente:");
             String username = in.readLine();
 
@@ -23,8 +24,7 @@ class ClientHandler implements Runnable {
 
             out.println("Ciao " + username + "! Accesso eseguito. Iniziamo il calcolo.");
 
-            // --- FASE 2: LOGICA PITAGORA ---
-            out.println("Cosa vuoi calcolare? (1 - Ipotenusa, 2 - Cateto):");
+            out.println("Cosa vuoi calcolare? -1: Ipotenusa -2: Cateto):");
             String sceltaStr = in.readLine();
 
             if (sceltaStr != null) {
