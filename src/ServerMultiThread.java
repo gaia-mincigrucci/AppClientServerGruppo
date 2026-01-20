@@ -7,10 +7,10 @@ public class ServerMultiThread {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("Server Pitagora avviato sulla porta " + port);
 
-            new Thread(() {
+            new Thread(() -> {
                 try {
                     Thread.sleep(500);
-                    ClientSemplice.main(null);
+                    ClientSemplice.main(new String[0]);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
