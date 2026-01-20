@@ -14,17 +14,17 @@ class ClientHandler implements Runnable {
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
         ) {
-            out.println("Connessione stabilita con il server.");
+            System.out.println("Connessione stabilita con il server.");
 
-            out.println("Inserisci il tuo Nome Utente:");
+            System.out.println("Inserisci il tuo Nome Utente:");
             String username = in.readLine();
 
-            out.println("Inserisci la tua Password:");
+            System.out.println("Inserisci la tua Password:");
             String password = in.readLine();
 
-            out.println("Ciao " + username + "! Accesso eseguito. Iniziamo il calcolo.");
+            System.out.println("Ciao " + username + "! Accesso eseguito. Iniziamo il calcolo.");
 
-            out.println("Cosa vuoi calcolare? -1: Ipotenusa -2: Cateto):");
+            System.out.println("Cosa vuoi calcolare? -1: Ipotenusa -2: Cateto):");
             String sceltaStr = in.readLine();
 
             if (sceltaStr != null) {
@@ -32,23 +32,23 @@ class ClientHandler implements Runnable {
 
                 switch (x) {
                     case 1:
-                        out.println("Inserisci il valore del cateto 1:");
+                        System.out.println("Inserisci il valore del cateto 1:");
                         double c1 = Double.parseDouble(in.readLine());
-                        out.println("Inserisci il valore del cateto 2:");
+                        System.out.println("Inserisci il valore del cateto 2:");
                         double c2 = Double.parseDouble(in.readLine());
                         double ipotenusa = Math.sqrt((c1 * c1) + (c2 * c2));
-                        out.println("RISULTATO: L'ipotenusa è: " + ipotenusa);
+                        System.out.println("RISULTATO: L'ipotenusa è: " + ipotenusa);
                         break;
                     case 2:
-                        out.println("Inserisci il valore dell'ipotenusa:");
+                        System.out.println("Inserisci il valore dell'ipotenusa:");
                         double ipo = Double.parseDouble(in.readLine());
-                        out.println("Inserisci il valore del cateto noto:");
+                        System.out.println("Inserisci il valore del cateto noto:");
                         double cateto1 = Double.parseDouble(in.readLine());
                         double catetoMancante = Math.sqrt((ipo * ipo) - (cateto1 * cateto1));
-                        out.println("RISULTATO: Il cateto è: " + catetoMancante);
+                        System.out.println("RISULTATO: Il cateto è: " + catetoMancante);
                         break;
                     default:
-                        out.println("Errore: Scelta non valida.");
+                        System.out.println("Errore: Scelta non valida.");
                 }
             }
         } catch (IOException | NumberFormatException e) {
@@ -58,3 +58,4 @@ class ClientHandler implements Runnable {
         }
     }
 }
+
