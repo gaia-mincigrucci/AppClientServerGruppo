@@ -9,7 +9,7 @@ public class ServerMultiThread {
 
             new Thread(() -> {
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(500); 
                     ClientSemplice.main(new String[0]);
                 } catch (Exception e) {
                     e.printStackTrace();
